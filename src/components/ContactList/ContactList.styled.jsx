@@ -8,6 +8,24 @@ export const ListStyled = styled.ul`
     overflow: auto;
     margin-top: 0;
     padding: 10px;
+::-webkit-scrollbar {
+  width: 40px;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius:10px;
+
+}
+ 
+::-webkit-scrollbar-thumb {
+  border-radius:10px;
+  background-image: linear-gradient(black,white,black)
+}
+::-webkit-scrollbar-track:hover {  
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+
+}
   }
 `;
 
@@ -21,14 +39,14 @@ export const ListItemStyled = styled.li`
 `;
 export const ContactTextStyled = styled.p`
    {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0;
     margin-right: 20px;
   }
 `;
 export const ContactListHeader = styled.h2`
    {
-    font-size: 32px;
+    font-size: 24px;
   }
 `;
 export const ContactListBtn = styled.button`
