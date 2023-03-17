@@ -3,7 +3,6 @@ import {
   ListStyled,
   ListItemStyled,
   ContactTextStyled,
-  ContactListHeader,
   ContactListBtn,
 } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,9 +35,13 @@ const ContactList = () => {
       {isLoading && <Loader />}
       {error && 'Sorry, something wrong, please try to reload page.'}
       {contactList.length > 0 && !isLoading && !error && (
-        <>
-          <ContactListHeader>Contacts:</ContactListHeader>
-          <ListStyled>
+        <div style={{ flexDirection: 'column', alignItems: 'center' }}>
+          <ListStyled
+            style={{
+              height: '70vh',
+              overflow: 'auto',
+            }}
+          >
             {filteredContacts.map(contact => {
               return (
                 <ListItemStyled key={contact.id}>
@@ -57,7 +60,7 @@ const ContactList = () => {
             {filteredContacts.length === 0 &&
               'Sorry, there is no such contact...'}
           </ListStyled>
-        </>
+        </div>
       )}
     </>
   );

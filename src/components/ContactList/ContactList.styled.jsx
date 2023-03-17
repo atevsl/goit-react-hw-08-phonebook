@@ -3,29 +3,23 @@ export const ListStyled = styled.ul`
    {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start
-    height: 430px;
-    overflow: auto;
-    margin-top: 0;
-    padding: 10px;
-::-webkit-scrollbar {
-  width: 40px;
-}
- 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  border-radius:10px;
+    justify-content: flex-start;
+    ::-webkit-scrollbar {
+      width: 25px;
+    }
 
-}
- 
-::-webkit-scrollbar-thumb {
-  border-radius:10px;
-  background-image: linear-gradient(black,white,black)
-}
-::-webkit-scrollbar-track:hover {  
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
 
-}
+    ::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-image: linear-gradient(black, white, black);
+    }
+    ::-webkit-scrollbar-track:hover {
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+    }
   }
 `;
 
@@ -44,11 +38,7 @@ export const ContactTextStyled = styled.p`
     margin-right: 20px;
   }
 `;
-export const ContactListHeader = styled.h2`
-   {
-    font-size: 24px;
-  }
-`;
+
 export const ContactListBtn = styled.button`
    {
      {

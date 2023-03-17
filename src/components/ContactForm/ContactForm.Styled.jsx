@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const FormStyled = styled.form`
    {
     font-size: 24px;
@@ -6,9 +7,11 @@ export const FormStyled = styled.form`
     border-radius: 15px;
     padding: 25px 30px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     gap: 20px;
+    margin-top: 40px;
   }
 `;
 export const ButtonStyled = styled.button`
@@ -41,10 +44,5 @@ export const LabelStyled = styled.label`
     flex-direction: column;
     justify-content: center;
     alignitems: center;
-  }
-`;
-export const Headers = styled.h1`
-   {
-    font-size: 40px;
   }
 `;
