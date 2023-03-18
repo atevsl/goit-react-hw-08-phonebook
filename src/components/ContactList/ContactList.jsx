@@ -46,7 +46,7 @@ const ContactList = () => {
               return (
                 <ListItemStyled key={contact.id}>
                   <ContactTextStyled>
-                    {contact.name}: {contact.phone}
+                    {contact.name}: {contact.number}
                   </ContactTextStyled>
                   <ContactListBtn
                     type="button"

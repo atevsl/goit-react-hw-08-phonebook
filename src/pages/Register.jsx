@@ -4,17 +4,31 @@ import {
   InputStyled,
   LabelStyled,
 } from 'components/ContactForm/ContactForm.Styled';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/features/authSlice';
 
 export const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const submitHendler = e => {
+    e.preventDefault();
+    dispatch(register({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
   return (
-    <FormStyled>
+    <FormStyled onSubmit={submitHendler}>
       <LabelStyled htmlFor="name">
         <span>Name:</span>
         <InputStyled
           type="text"
           name="name"
-          // value={name}
-          // onChange={onNameChange}
+          value={name}
+          onChange={e => setName(e.currentTarget.value)}
         />
       </LabelStyled>
       <LabelStyled htmlFor="email">
@@ -22,8 +36,8 @@ export const Register = () => {
         <InputStyled
           type="email"
           name="email"
-          // value={number}
-          // onChange={onNumberChange}
+          value={email}
+          onChange={e => setEmail(e.currentTarget.value)}
         ></InputStyled>
       </LabelStyled>
       <LabelStyled htmlFor="password">
@@ -31,8 +45,8 @@ export const Register = () => {
         <InputStyled
           type="password"
           name="password"
-          // value={number}
-          // onChange={onNumberChange}
+          value={password}
+          onChange={e => setPassword(e.currentTarget.value)}
         ></InputStyled>
       </LabelStyled>
       <ButtonStyled type="submit">Register</ButtonStyled>

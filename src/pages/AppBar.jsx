@@ -1,20 +1,27 @@
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { getIsLogged } from 'redux/store';
 import { Header, NavLinkContainer, NavLinkStyled, Title } from './Pages.Styled';
 
 export const AppBar = () => {
+  const isLogged = useSelector(getIsLogged);
+  console.log('isLogged in appBar', isLogged);
   return (
     <Header>
       <Title>Phonebook</Title>
       <NavLinkContainer>
-        <NavLinkStyled to="register">Register</NavLinkStyled>
-        <NavLinkStyled to="login">Login</NavLinkStyled>
-        <NavLinkStyled to="contacts">
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <UserMenu />
+        {isLogged === false ? (
+          <>
+            <NavLinkStyled to="register">Register</NavLinkStyled>
+            <NavLinkStyled to="login">Login</NavLinkStyled>
+          </>
+        ) : (
+          <NavLinkStyled to="contacts">
             Contacts
-          </div>
-        </NavLinkStyled>
+            <UserMenu />
+          </NavLinkStyled>
+        )}
       </NavLinkContainer>
 
       <Outlet />
@@ -22,10 +29,4 @@ export const AppBar = () => {
   );
 };
 {
-  /* <NavLink
-  to="/"
-  className={({ isActive }) => (isActive ? css.navActive : css.nav)}
->
-  Home
-</NavLink>; */
 }
