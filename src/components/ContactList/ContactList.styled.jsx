@@ -4,6 +4,7 @@ export const ListStyled = styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 500px;
     ::-webkit-scrollbar {
       width: 25px;
     }

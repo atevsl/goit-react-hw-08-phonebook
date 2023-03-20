@@ -36,7 +36,7 @@ const ContactList = () => {
         <div style={{ flexDirection: 'column', alignItems: 'center' }}>
           <ListStyled
             style={{
-              height: '70vh',
+              height: '75vh',
               overflow: 'auto',
             }}
           >
