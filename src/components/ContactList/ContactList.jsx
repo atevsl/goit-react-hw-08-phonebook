@@ -9,12 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteContact,
   fetchContactList,
-  selectContactList,
-  selectError,
-  selectIsLoading,
-} from '../../redux/features/contactListSlice';
-import { selectFilter } from '../../redux/features/filterSlice';
+} from '../../redux/contacts/contactListSlice';
+import { selectFilter } from '../../redux/filter/filterSlice';
 import Loader from 'components/Loader/Loader';
+import { selectContactList, selectError, selectIsLoading } from 'redux/store';
 
 const ContactList = () => {
   const dispatch = useDispatch();

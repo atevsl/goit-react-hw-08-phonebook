@@ -1,41 +1,52 @@
-import Filter from '../Filter/Filter';
-import ContactForm from '../ContactForm/ContactForm';
-import ContactList from '../ContactList/ContactList';
-import { AppBar } from 'pages/AppBar';
-import { Route, Routes } from 'react-router-dom';
-import { Contacts } from 'pages/Contacts';
-import { Register } from 'pages/Register';
-import { Login } from 'pages/Login';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchCurrentUser } from 'redux/features/authSlice';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { fetchCurrentUser } from 'redux/auth/authSlice';
+import { PrivateRoute } from '../PrivateRoute';
+import { getIsfetchCurrentUser } from 'redux/store';
+import Loader from 'components/Loader/Loader';
+import { PublicRoute } from 'components/PublicRoute';
+import { Layout } from 'components/Layout';
 
-const App = () => {
+const HomePage = lazy(() => import('../../pages/Home'));
+const ContactsPage = lazy(() => import('../../pages/Contacts'));
+const RegisterPage = lazy(() => import('../../pages/Register'));
+const LoginPage = lazy(() => import('../../pages/Login'));
+
+export const App = () => {
   const dispatch = useDispatch();
+  const isfetchCurrentUser = useSelector(getIsfetchCurrentUser);
+
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<AppBar />}>
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="contacts" element={<Contacts />} />
-        </Route>
-      </Routes>
-    </div>
+
+  return isfetchCurrentUser ? (
+    <Loader />
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute redirectTo="/contacts" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
 };
-
-export default App;

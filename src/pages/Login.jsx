@@ -6,9 +6,8 @@ import {
 } from 'components/ContactForm/ContactForm.Styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { logIn } from 'redux/features/authSlice';
-export const Login = () => {
+import { logIn } from 'redux/auth/authSlice';
+const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +16,6 @@ export const Login = () => {
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
-    // <Navigate to={'contacts'} />;
   };
   return (
     <FormStyled onSubmit={submitHendler}>
@@ -47,3 +45,4 @@ export const Login = () => {
     </FormStyled>
   );
 };
+export default Login;

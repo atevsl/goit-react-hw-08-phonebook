@@ -6,9 +6,9 @@ import {
 } from 'components/ContactForm/ContactForm.Styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/features/authSlice';
+import { register } from 'redux/auth/authSlice';
 
-export const Register = () => {
+const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,3 +53,4 @@ export const Register = () => {
     </FormStyled>
   );
 };
+export default Register;

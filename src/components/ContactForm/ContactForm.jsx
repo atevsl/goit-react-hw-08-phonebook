@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import shortid from 'shortid';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  postContacts,
-  selectContactList,
-} from 'redux/features/contactListSlice';
+import { postContacts } from 'redux/contacts/contactListSlice';
+import { selectContactList } from 'redux/store';
 import {
   FormStyled,
   ButtonStyled,

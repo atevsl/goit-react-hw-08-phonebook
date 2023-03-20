@@ -2,19 +2,17 @@ import { useSelector } from 'react-redux';
 import { getUsername } from 'redux/store';
 import { LogOutBtn, Mail, UserMenuWrap } from './UserMenu.Styled';
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/features/authSlice';
-import { Navigate } from 'react-router-dom';
+import { logOut } from 'redux/auth/authSlice';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const name = useSelector(getUsername);
-  const onLogoutHendler = () => {
-    dispatch(logOut());
-    // <Navigate to={'login'} />;
-  };
+
   return (
     <UserMenuWrap>
-      <Mail>{name}</Mail>
-      <LogOutBtn onClick={onLogoutHendler}>Logout</LogOutBtn>
+      <Mail>Welcome, {name}</Mail>
+      <LogOutBtn type="button" onClick={() => dispatch(logOut())}>
+        Logout
+      </LogOutBtn>
     </UserMenuWrap>
   );
 };
