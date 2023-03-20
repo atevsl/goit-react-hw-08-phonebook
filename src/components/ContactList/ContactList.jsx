@@ -13,6 +13,7 @@ import {
 import { selectFilter } from '../../redux/filter/filterSlice';
 import Loader from 'components/Loader/Loader';
 import { selectContactList, selectError, selectIsLoading } from 'redux/store';
+import { DeleteOutlined } from '@ant-design/icons/lib/icons';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const ContactList = () => {
                     type="button"
                     onClick={() => dispatch(deleteContact(contact.id))}
                   >
+                    <DeleteOutlined />
                     Delete
                   </ContactListBtn>
                 </ListItemStyled>

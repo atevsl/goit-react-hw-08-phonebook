@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postContacts } from 'redux/contacts/contactListSlice';
 import { selectContactList } from 'redux/store';
+import { UserAddOutlined } from '@ant-design/icons';
+
 import {
   FormStyled,
   ButtonStyled,
@@ -70,7 +72,10 @@ const ContactForm = () => {
         ></InputStyled>
       </LabelStyled>
 
-      <ButtonStyled type="submit">Add contact</ButtonStyled>
+      <ButtonStyled type="submit">
+        <UserAddOutlined />
+        Add contact
+      </ButtonStyled>
     </FormStyled>
   );
 };

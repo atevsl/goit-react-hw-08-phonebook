@@ -1,3 +1,4 @@
+import { LoginOutlined } from '@ant-design/icons/lib/icons';
 import {
   ButtonStyled,
   FormStyled,
@@ -41,7 +42,10 @@ const Login = () => {
           }}
         ></InputStyled>
       </LabelStyled>
-      <ButtonStyled type="submit">Login</ButtonStyled>
+      <ButtonStyled type="submit">
+        <LoginOutlined />
+        Login
+      </ButtonStyled>
     </FormStyled>
   );
 };

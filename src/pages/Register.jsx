@@ -1,3 +1,4 @@
+import { LoginOutlined } from '@ant-design/icons/lib/icons';
 import {
   ButtonStyled,
   FormStyled,
@@ -49,7 +50,10 @@ const Register = () => {
           onChange={e => setPassword(e.currentTarget.value)}
         ></InputStyled>
       </LabelStyled>
-      <ButtonStyled type="submit">Register</ButtonStyled>
+      <ButtonStyled type="submit">
+        <LoginOutlined />
+        Register
+      </ButtonStyled>
     </FormStyled>
   );
 };
